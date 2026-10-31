@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8"?>
 
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -8,50 +8,43 @@
 
     <ContentPage.Background>
         <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-            <GradientStop Offset="0.0" Color="LightCyan" />
-            <GradientStop Offset="0.5" Color="#3a7bd5" />
-            <GradientStop Offset="1.0" Color="Purple" />
+            <GradientStop Offset="0.0" Color="LightCyan"/>
+            <GradientStop Offset="0.5" Color="#3a7bd5"/>
+            <GradientStop Offset="1.0" Color="Purple"/>
         </LinearGradientBrush>
     </ContentPage.Background>
-
     <VerticalStackLayout
-        Padding="30"
-        Spacing="25"
-        VerticalOptions="Center">
-
-        <!-- כותרת -->
+            Padding="30"
+            Spacing="25"
+            VerticalOptions="Center">
         <Label
             FontAttributes="Bold"
             FontSize="25"
             VerticalOptions="Center"
             Text="כניסה"
-            TextColor="Snow" />
-
+            TextColor="Snow"/>
         <Border
             Padding="10"
             Stroke="#ccc"
             StrokeShape="RoundRectangle 8"
             StrokeThickness="1">
-
             <Entry
                 x:Name="UsernameEntry"
                 Keyboard="Email"
                 FontSize="18"
                 Placeholder="Email"
                 TextColor="Wheat"
-                ReturnType="Go" />
+                ReturnType="Go">
+            </Entry>
         </Border>
-
         <Border
             Stroke="#ccc"
             StrokeShape="RoundRectangle 8"
             StrokeThickness="1">
-
             <Grid
                 Padding="10"
                 ColumnDefinitions="*,Auto"
                 VerticalOptions="Center">
-
                 <Entry
                     x:Name="PasswordEntry"
                     BackgroundColor="Transparent"
@@ -59,40 +52,33 @@
                     IsPassword="True"
                     Placeholder="סיסמה"
                     TextColor="Wheat"
-                    VerticalOptions="Center" />
-
+                    VerticalOptions="Center"/>
                 <Button
                     x:Name="TogglePassordButton"
                     Margin="5,0,0,0"
                     Padding="0"
                     BackgroundColor="Transparent"
+                    FontFamily="MaterialIcons-Regular"
                     FontSize="24"
                     HorizontalOptions="End"
-                    Text="EYE"
+                    Text="&#xe8f5;"
                     TextColor="White"
-                    VerticalOptions="Center" />
-
+                    VerticalOptions="Center"/>  
             </Grid>
         </Border>
-
-        <!-- כפתור כניסה -->
         <Button
             CornerRadius="8"
             FontSize="18"
             HeightRequest="50"
             IsEnabled="False"
             Text="חיבור"
-            TextColor="White" />
-
-        <!-- שגיאה -->
+            TextColor="White"/>
         <Label
             x:Name="errorLbl"
             FontSize="45"
             HorizontalTextAlignment="Center"
             IsVisible="False"
             Text="שגיאה"
-            TextColor="Red" />
-
+            TextColor="Red"/>
     </VerticalStackLayout>
-
 </ContentPage>
