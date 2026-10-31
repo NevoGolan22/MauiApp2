@@ -63,7 +63,6 @@
 
                 <Button
                     x:Name="TogglePassordButton"
-                    Clicked="TogglePassordVisibility"
                     Margin="5,0,0,0"
                     Padding="0"
                     BackgroundColor="Transparent"
