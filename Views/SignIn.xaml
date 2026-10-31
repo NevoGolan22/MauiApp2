@@ -53,17 +53,18 @@
                     Placeholder="סיסמה"
                     TextColor="Wheat"
                     VerticalOptions="Center"/>
-                <Button
+                                <Button
                     x:Name="TogglePassordButton"
+                    Clicked="ToggleP assordButton_Clicked"
                     Margin="5,0,0,0"
                     Padding="0"
                     BackgroundColor="Transparent"
                     FontFamily="MaterialIcons-Regular"
                     FontSize="24"
                     HorizontalOptions="End"
-                    Text="&#xe8f5;"
+                    Text="&#xe8f4;"
                     TextColor="White"
-                    VerticalOptions="Center"/>  
+                    VerticalOptions="Center"/>
             </Grid>
         </Border>
         <Button
