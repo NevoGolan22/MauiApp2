@@ -8,7 +8,7 @@ namespace MauiApp2.Models
 {
     public class User
     {
-        public string UserEmail { get; set; }
-        public string UserPassword { get; set; }
+        public string? UserEmail { get; set; }
+        public string? UserPassword { get; set; }
     }
 }

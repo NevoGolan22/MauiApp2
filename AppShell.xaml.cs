@@ -1,8 +1,8 @@
 ﻿namespace MauiApp2
 {
-    public partial class AppShell : Shell
+    public partial class SignInPage2 : Shell
     {
-        public AppShell()
+        public SignInPage2()
         {
             InitializeComponent();
         }

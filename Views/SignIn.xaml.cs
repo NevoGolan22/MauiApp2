@@ -4,50 +4,75 @@ using MauiApp2.Service;
 
 public partial class SignIn : ContentPage
 {
-    private DBMokup _db;
     private string _userName;
     private string _password;
+    private bool _entryAsPassword;
+    private bool _iDebugMode => true;
+    private DBMokup _dbMokup;
+    public bool IsSignedInButtonEnabled
+    {
+        get => !string.IsNullOrEmpty(UserName) && !string.IsNullOrEmpty(UserPassword);
+    }
     public string UserName
     {
-        get { return _userName; }
+        get => _userName;
         set
         {
-
             _userName = value;
-            OnPropertyChanged();
+            OnPropertyChanged(nameof(UserName));
+            OnPropertyChanged(nameof(IsSignedInButtonEnabled));
         }
-
     }
     public string UserPassword
-    {
-        get { return _password; }
+    { 
+        get => _password;
         set
         {
             _password = value;
-            OnPropertyChanged();
+            OnPropertyChanged(nameof(UserPassword));
+            OnPropertyChanged(nameof(IsSignedInButtonEnabled));
         }
-
     }
-    public bool IsSignInButtonEnabled
+    public bool EntryAsPassword
     {
-
-        get => !(string.IsNullOrEmpty(UserName) || string.IsNullOrEmpty(UserPassword));
-
+        get => _entryAsPassword;
+        set
+        {
+            _entryAsPassword = value;
+            OnPropertyChanged(nameof(EntryAsPassword));
+        }
     }
+
+
     public SignIn()
     {
         InitializeComponent();
+        BindingContext = this;
+        EntryAsPassword = true;
+        _dbMokup = new DBMokup();
+        if (_iDebugMode)
+        {
+            UserName = "admin@mail.com";
+            UserPassword = "admin";
+        }
     }
-
-    private void TogglePassordButton_Clicked(object sender, EventArgs e)
+    void OnTugglePasswordButtonClicked(object sender, EventArgs e)
     {
-        var visBtn = sender as Button;
-        PasswordEntry.IsPassword = !PasswordEntry.IsPassword;
-        if (PasswordEntry.IsPassword)
-            visBtn!.Text = FontHelper.CLOSED_EYE_ICON;
+        EntryAsPassword = !EntryAsPassword;
+    }   
+    private void OnSignInButtonClicked(object sender, EventArgs e)
+    {
+        if(_dbMokup.isExist(UserName, UserPassword))
+        {
+            errorLbl.IsVisible = true;
+            errorLbl.Text = "התחברות הצליחה";
+        }
         else
-            visBtn!.Text = FontHelper.OPEN_EYE_ICON;
-
+        {
+            errorLbl.IsVisible =true;
+            errorLbl.Text ="התחברות נכשלה";
+        }
     }
+
 
 }

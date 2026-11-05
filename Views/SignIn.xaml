@@ -3,8 +3,13 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiApp2.Views.SignIn"
-             Title="SignIn"
+                          Title="SignIn"
+
+             
+             xmlns:Views="clr-namespace:MauiApp2.Views"
+             x:DataType="Views:SignIn"
              FlowDirection="RightToLeft">
+                
 
     <ContentPage.Background>
         <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
@@ -29,7 +34,7 @@
             StrokeShape="RoundRectangle 8"
             StrokeThickness="1">
             <Entry
-                x:Name="UsernameEntry"
+                Text="{Binding UserName}"
                 Keyboard="Email"
                 FontSize="18"
                 Placeholder="Email"
@@ -46,16 +51,16 @@
                 ColumnDefinitions="*,Auto"
                 VerticalOptions="Center">
                 <Entry
-                    x:Name="PasswordEntry"
+                    Text="{Binding UserPassword}"
                     BackgroundColor="Transparent"
+                    IsPassword="{Binding EntryAsPassword}"
                     FontSize="18"
-                    IsPassword="True"
                     Placeholder="סיסמה"
                     TextColor="Wheat"
                     VerticalOptions="Center"/>
                                 <Button
                     x:Name="TogglePassordButton"
-                    Clicked="ToggleP assordButton_Clicked"
+                   
                     Margin="5,0,0,0"
                     Padding="0"
                     BackgroundColor="Transparent"
@@ -71,9 +76,10 @@
             CornerRadius="8"
             FontSize="18"
             HeightRequest="50"
-            IsEnabled="False"
+            IsEnabled="{Binding IsSignedInButtonEnabled}"
             Text="חיבור"
-            TextColor="White"/>
+            TextColor="White"
+            Clicked="OnSignInButtonClicked"/>
         <Label
             x:Name="errorLbl"
             FontSize="45"
