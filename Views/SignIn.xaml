@@ -6,11 +6,7 @@
                           Title="SignIn"
              
              xmlns:views="clr-namespace:MauiApp2.Views"
-             x:DataType="views:SignInViewModel"
-
-             
-             xmlns:Views="clr-namespace:MauiApp2.Views"
-             x:DataType="Views:SignIn"
+             x:DataType="views:SignIn"
              FlowDirection="RightToLeft">
     
                 

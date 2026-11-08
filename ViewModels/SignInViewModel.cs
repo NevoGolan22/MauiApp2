@@ -5,10 +5,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace MauiApp2.ViewModels
 {
-    public class SignInViewModel:ObservableObject
+    public class SignInViewModel : ObservableObject
     {
         private string? _userName;
         private string? _password;
@@ -88,6 +89,13 @@ namespace MauiApp2.ViewModels
                 _MessageTextColor = value;
                 OnPropertyChanged(nameof(MessageTextColor));
             }
+        }
+
+        public ICommand ShowPasswordCommand { get; }
+        public ICommand SignInCommand { get; }
+        public SignInViewModel()
+        {
+            
         }
     }
 }
