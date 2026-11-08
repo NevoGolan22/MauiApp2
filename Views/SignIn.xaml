@@ -81,11 +81,10 @@
             TextColor="White"
             Clicked="OnSignInButtonClicked"/>
         <Label
-            x:Name="errorLbl"
             FontSize="45"
             HorizontalTextAlignment="Center"
-            IsVisible="False"
-            Text="שגיאה"
-            TextColor="Red"/>
+            IsVisible="{Binding IsMessageLabelVisible}"
+            Text="{Binding MessageText}"
+            TextColor="{Binding MessageTextColor}"/>
     </VerticalStackLayout>
 </ContentPage>
