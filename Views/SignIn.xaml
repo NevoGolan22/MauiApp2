@@ -4,11 +4,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiApp2.Views.SignIn"
                           Title="SignIn"
+             
+             xmlns:views="clr-namespace:MauiApp2.Views"
+             x:DataType="views:SignInViewModel"
 
              
              xmlns:Views="clr-namespace:MauiApp2.Views"
              x:DataType="Views:SignIn"
              FlowDirection="RightToLeft">
+    
                 
 
     <ContentPage.Background>
