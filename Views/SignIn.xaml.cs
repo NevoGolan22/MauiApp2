@@ -15,35 +15,17 @@ public partial class SignIn : ContentPage
 
         BindingContext = new SignInViewModel();
 
-        EntryAsPassword = true;
+        //EntryAsPassword = true;
 
-        _dbMokup = new DBMokup();
+        //_dbMokup = new DBMokup();
 
-        if (_iDebugMode)
-        {
-            UserName = "admin@mail.com";
-            UserPassword = "admin";
-        }
+        //if (_iDebugMode)
+        //{
+        //    UserName = "admin@mail.com";
+        //    UserPassword = "admin";
+
     }
 
-    void OnTugglePasswordButtonClicked(object sender, EventArgs e)
-    {
-        EntryAsPassword = !EntryAsPassword;
-    }
-
-    private void OnSignInButtonClicked(object sender, EventArgs e)
-    {
-        if (_dbMokup.isExist(UserName, UserPassword))
-        {
-            MessageText = MesseagesHelper.SignInSuccessMessage;
-            MessageTextColor = Colors.Green;
-        }
-        else
-        {
-            MessageText = MesseagesHelper.SignInErrorMessage;
-            MessageTextColor = Colors.Red;
-        }
-
-        IsMessageLabelVisible = true;
-    }
+    
+    
 }

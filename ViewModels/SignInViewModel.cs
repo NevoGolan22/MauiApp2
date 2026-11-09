@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using MauiApp2.Helper;
 using MauiApp2.Service;
 using System;
 using System.Collections.Generic;
@@ -9,17 +10,28 @@ using System.Windows.Input;
 
 namespace MauiApp2.ViewModels
 {
-    public class SignInViewModel : ObservableObject
+    public class SignInViewModel : ViewModelBase /*ObservableObject*/
     {
         private string? _userName;
         private string? _password;
-        private bool? _entryAsPassword;
-        private bool? _IsMessageLabelVisible;
+        private bool _entryAsPassword;
+        private bool _IsMessageLabelVisible;
         private string? _messageText;
         private Color? _MessageTextColor;
+        private string? _TogglePasswordButtonText;
+
         private bool _iDebugMode => true;
         private DBMokup? _dbMokup;
 
+        public string TogglePasswordButtonText
+        {
+            get => _TogglePasswordButtonText!;
+            set
+            {
+                _TogglePasswordButtonText = value;
+                OnPropertyChanged(nameof(TogglePasswordButtonText));
+            }
+        }
         public bool IsSignedInButtonEnabled
         {
             get => !string.IsNullOrEmpty(UserName)
@@ -96,6 +108,35 @@ namespace MauiApp2.ViewModels
         public SignInViewModel()
         {
             
+        }
+        void OnTugglePasswordButtonClicked()
+        {
+            var visBtn = Sender as Button;
+            if(EntryAsPassword)
+            {
+                visBtn.Text = FontHelper.CLOSED_EYE_ICON;
+            }
+            else
+            {
+                visBtn.Text = FontHelper.OPEN_EYE_ICON;
+            }
+            EntryAsPassword = !EntryAsPassword;
+        }
+
+       void OnSignInButtonClicked()
+        {
+            //if (_dbMokup.isExist(UserName, UserPassword))
+            //{
+            //    MessageText = MesseagesHelper.SignInSuccessMessage;
+            //    MessageTextColor = Colors.Green;
+            //}
+            //else
+            //{
+            //    MessageText = MesseagesHelper.SignInErrorMessage;
+            //    MessageTextColor = Colors.Red;
+            //}
+
+            //IsMessageLabelVisible = true;
         }
     }
 }
