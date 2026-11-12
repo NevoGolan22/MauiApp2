@@ -107,24 +107,57 @@ namespace MauiApp2.ViewModels
         public ICommand SignInCommand { get; }
         public SignInViewModel()
         {
+            ShowPasswordCommand = new Command(() =>
+            {
+                if (EntryAsPassword)
+                {
+                    TogglePasswordButtonText = FontHelper.CLOSED_EYE_ICON;
+                }
+                else
+                {
+                    TogglePasswordButtonText = FontHelper.OPEN_EYE_ICON;
+                }
+                EntryAsPassword = !EntryAsPassword;
+            });
+            SignInCommand = new Command(OnSignInButtonClicked);
+
+            TogglePasswordButtonText = FontHelper.CLOSED_EYE_ICON;
             
+            EntryAsPassword = true;
+            _dbMokup = new DBMokup();
+            if (_iDebugMode)
+            {
+                UserName = "admin@mail.com";
+                UserPassword = "admin";
+            }
         }
         void OnTugglePasswordButtonClicked()
         {
-            var visBtn = Sender as Button;
-            if(EntryAsPassword)
+
+            //var visBtn = Sender as Button;
+            //if (EntryAsPassword)
+            //{
+            //    TogglePasswordButtonText = FontHelper.CLOSED_EYE_ICON;
+            //}
+            //else
+            //{
+            //    TogglePasswordButtonText = FontHelper.OPEN_EYE_ICON;
+            //}
+            //EntryAsPassword = !EntryAsPassword;
+        }
+
+        void OnSignInButtonClicked()
+        {
+            if (_dbMokup!.IsExist(UserName,UserPassword)) 
             {
-                visBtn.Text = FontHelper.CLOSED_EYE_ICON;
+                MessageText = MesseagesHelper.SignInSuccessMessage;
+                MessageTextColor = Colors.Green;
             }
             else
             {
-                visBtn.Text = FontHelper.OPEN_EYE_ICON;
+                MessageText = MesseagesHelper.SignInErrorMessage;
+                MessageTextColor = Colors.Red;
             }
-            EntryAsPassword = !EntryAsPassword;
-        }
-
-       void OnSignInButtonClicked()
-        {
             //if (_dbMokup.isExist(UserName, UserPassword))
             //{
             //    MessageText = MesseagesHelper.SignInSuccessMessage;

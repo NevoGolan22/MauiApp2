@@ -16,7 +16,7 @@ namespace MauiApp2.Service
             _users.Add(new User { UserEmail = "user1@mail.com", UserPassword = "pass1" });
             _users.Add(new User { UserEmail = "user2@mail.com", UserPassword = "pass2" });
         }
-        public bool isExist(string uEmail, string uPass)
+        public bool IsExist(string uEmail, string uPass)
         {
             return _users.Any(u => u.UserEmail == uEmail && u.UserPassword == uPass);
         }

@@ -67,9 +67,10 @@
                     FontFamily="MaterialIcons-Regular"
                     FontSize="24"
                     HorizontalOptions="End"
-                    Text="&#xe8f4;"
+                    Text="{Binding TogglePasswordButtonText}"
                     TextColor="White"
-                    VerticalOptions="Center"/>
+                    VerticalOptions="Center"
+                    Command="{Binding showPasswordButton}"/>
             </Grid>
         </Border>
         <Button
@@ -79,7 +80,7 @@
             IsEnabled="{Binding IsSignedInButtonEnabled}"
             Text="חיבור"
             TextColor="White"
-            Clicked="OnSignInButtonClicked"/>
+            Command="{Binding SignInCommand}"/>
         <Label
             FontSize="45"
             HorizontalTextAlignment="Center"
